@@ -1,0 +1,18 @@
+<h1>Create Vendorsweet</h1>
+
+<% if flash[:errors] %>
+<% flash[:errors].each do |error| %>
+<%= error %>
+<% end %>
+<% end %>
+<%# # 2. VendorSweet Create Form
+# A user should be able to visit a page to link a vendor and a sweet. 
+# Once the VendorSweet is created, the user should be redirected to the selected vendor's show page. %>
+
+<%= form_for @vendor_sweet do |f| %>
+<p>Vendors: <%= f.collection_select :vendor_id, Vendor.all, :id, :name %></p>
+<p>Sweets: <%= f.collection_select :sweet_id, Sweet.all, :id, :name %></p>
+<%= f.label :price %>
+<%= f.number_field :price %>
+<p><%= f.submit %></p>
+<%end%>
